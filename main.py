@@ -26,35 +26,20 @@ def update_yt_dlp():
 
 
 def download_process():
-    # Example: Download best quality video and audio, merge to MP4
-    video_url = input("Enter the YouTube video URL: ")  # Example URL
-    audio_video = (
-        input('Enter "v" for video download or "a" for audio download: ')
-        .strip()
-        .lower()
-    )
-    OUTPUT_DIR = "./downloads"  # Default output directory
-    os.makedirs(OUTPUT_DIR, exist_ok=True)  # Ensure output directory exists
-    if audio_video not in ["v", "a"]:
+    video_url = input("Enter the YouTube video URL: ")
+    OUTPUT_DIR = "./downloads"
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-        while audio_video not in ["v", "a"]:
-            audio_video = (
-                input(
-                    'Invalid input. Enter "v" for video download or "a" for audio download: '
-                )
-                .strip()
-                .lower()
-            )
-            print(audio_video)
-            if audio_video == "v":
-                vd.video_download(video_url, OUTPUT_DIR, quality="best")
-            else:
-                au_dl.audio_download(video_url, OUTPUT_DIR)
+    while True:
+        audio_video = input('Enter "v" for video download or "a" for audio download: ').strip().lower()
+        if audio_video in ["v", "a"]:
+            break
+        print('Invalid input. Please enter "v" for video or "a" for audio.')
+
+    if audio_video == "v":
+        vd.video_download(video_url, OUTPUT_DIR, quality="best")
     else:
-        if audio_video == "v":
-            vd.video_download(video_url, OUTPUT_DIR, quality="best")
-        else:
-            au_dl.audio_download(video_url, OUTPUT_DIR)
+        au_dl.audio_download(video_url, OUTPUT_DIR)
 
 
 if __name__ == "__main__":
