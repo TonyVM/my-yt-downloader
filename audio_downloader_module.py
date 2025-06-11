@@ -6,6 +6,8 @@ def audio_download(video_url: str, output_dir: str):
 
     AUDIO_OPTS = {
         "format": "bestaudio/best",  # Select best audio
+        "audio_format": "mp3",  # Specify audio format
+        "extractaudio": True,  # Extract audio only
         "outtmpl": os.path.join(output_dir, "%(title)s.%(ext)s"),  # Custom output path
         "postprocessors": [
             {
