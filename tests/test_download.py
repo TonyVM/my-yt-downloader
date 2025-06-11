@@ -1,11 +1,7 @@
 import os
-import sys
-
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 import pytest
 import audio_downloader_module as au_dl
 import video_downloader_module as vd
-
 
 TEST_VIDEO_URL = (
     "https://www.youtube.com/watch?v=yO01B8OoXfo"  # Video de prueba de yt-dlp
