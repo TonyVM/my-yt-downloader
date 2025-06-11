@@ -11,10 +11,12 @@ def update_yt_dlp():
         print("yt-dlp updated successfully.")
     except FileNotFoundError:
         print(
-            "Error: 'uv' command not found. Please ensure 'uv' is installed and in your system's PATH."
+            "Error: 'uv' command not found. Please ensure 'uv' is installed and "
+            "in your system's PATH."
         )
         print(
-            "You can usually install it via 'pip install uv' or refer to uv's official documentation."
+            "You can usually install it via 'pip install uv' or refer to uv's official "
+            "documentation."
         )
     except subprocess.CalledProcessError as e:
         print(f"Error updating yt-dlp: {e}")
@@ -31,7 +33,11 @@ def download_process():
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
     while True:
-        audio_video = input('Enter "v" for video download or "a" for audio download: ').strip().lower()
+        audio_video = (
+            input('Enter "v" for video download or "a" for audio download: ')
+            .strip()
+            .lower()
+        )
         if audio_video in ["v", "a"]:
             break
         print('Invalid input. Please enter "v" for video or "a" for audio.')
