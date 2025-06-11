@@ -1,8 +1,12 @@
 name: Run Tests Before Push
 
 on:
-  pre-push:
-    types: [pre-push]
+  push:
+    branches:
+      - main
+      - master
+      - develop
+      - "feature/*"
 
 jobs:
   test:
