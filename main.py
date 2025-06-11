@@ -1,26 +1,16 @@
-import yt_dlp
 import os
-
+import audio_downloader_module as au_dl
+import video_downloader_module as vd
 # Example: Download best quality video and audio, merge to MP4
-video_url = input("Enter the YouTube video URL: ")  # Example URL 
-output_dir = './downloads'
-os.makedirs(output_dir, exist_ok=True)  # Ensure output directory exists
+video_url = input("Enter the YouTube video URL: ")  # Example URL
+audio_video = input('Enter "v" for video download or "a" for audio download: ').strip().lower()
+OUTPUT_DIR = './downloads'  # Default output directory
+os.makedirs(OUTPUT_DIR, exist_ok=True)  # Ensure output directory exists
 
-ydl_opts = {
-    'format': 'bestvideo+bestaudio/best',  # Select best video and best audio
-    
-    'merge_output_format': 'mp4',          # Output format
-    'outtmpl': os.path.join(output_dir, '%(title)s.%(ext)s'),  # Custom output 
-    # path
-    # 'ffmpeg_location': '/path/to/ffmpeg/bin/ffmpeg.exe' # Specify FFmpeg
-    # path if not in system PATH [12]
-    'quiet': False
-}
 
-try:
-    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-        print(f"Initiating download for: {video_url}")
-        ydl.download([video_url])
-    print("Video downloaded successfully!")
-except Exception as e:
-    print(f"An error occurred during download: {e}")
+while audio_video not in ['v', 'a']:
+    audio_video = input('Invalid input. Enter "v" for video download or "a" for audio download: ').strip().lower()
+    if audio_video == 'v':
+        vd.video_download(video_url, OUTPUT_DIR, quality='best')
+    else:
+        au_dl.audio_download(video_url, OUTPUT_DIR)
