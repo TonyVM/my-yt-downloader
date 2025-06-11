@@ -1,0 +1,21 @@
+# Archivos y carpetas que deben ser ignorados por git
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.swp
+*.swo
+*.DS_Store
+.env
+.env.*
+.venv
+# Descargas de videos
+downloads/
+# Archivos de configuración de usuario
+*.log
+# Archivos de sistema de macOS
+.DS_Store
+# Archivos temporales
+*.tmp
+*.bak
+*.old
