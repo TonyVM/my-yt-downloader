@@ -10,7 +10,7 @@ pipeline {
 
         stage('Install dependencies') {
             steps {
-              sh 'brew install ffmpeg'
+              sh '/opt/homebrew/bin/ffmpeg -version'
             }
         }
 
