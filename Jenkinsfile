@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+        PATH = "/opt/homebrew/bin:$PATH"
+    }
 
     stages {
         stage('Checkout') {
@@ -8,9 +11,9 @@ pipeline {
             }
         }
 
-        stage('Install dependencies') {
+        stage('Check ffmpeg') {
             steps {
-              sh '/opt/homebrew/bin/ffmpeg -version'
+                sh 'ffmpeg -version'
             }
         }
 
